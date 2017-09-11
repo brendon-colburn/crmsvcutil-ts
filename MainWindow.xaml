@@ -1,0 +1,13 @@
+﻿<Window x:Class="crmsvcutil_ts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CrmSvcUtilTypescript" Height="550" Width="525">
+    <Grid>
+        <Button Content="Login to CRM" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click"/>
+        <ListBox x:Name="listBox" TextSearch.TextPath="SchemaName" SelectionMode="Multiple" HorizontalAlignment="Left" Height="360" Margin="10,78,0,0" VerticalAlignment="Top" Width="298" Visibility="Hidden"/>
+        <Button x:Name="button" Content="Generate Xrm.ts" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="108" Click="button_Click" Visibility="Hidden"/>
+        <Label x:Name="label" Content="Generated" HorizontalAlignment="Left" Height="29" Margin="138,455,0,0" VerticalAlignment="Top" Width="92" FontStyle="Italic" Visibility="Hidden"/>
+        <Label x:Name="label1" Content="Select your entities and click generate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,35,0,0" Width="298" Visibility="Hidden"/>
+
+    </Grid>
+</Window>
