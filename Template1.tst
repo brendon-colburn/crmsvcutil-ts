@@ -139,7 +139,6 @@ module YOUR_PROJECTNAME_HERE {
         * @return {object} Http PATCH Promise
          */  
 		update<T>(e: Entity, route:string, id:string ) {
-		update<T>(e: Entity, route:string, id:string ) {
 			let url = this.BaseUrl + route + "(" + id + ")";
 			return this.$http.patch<T>(url, e, this.getConfig());
 		}
