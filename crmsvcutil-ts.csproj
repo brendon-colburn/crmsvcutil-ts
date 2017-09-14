@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="XrmToTypeScript.cs" />
     <Page Include="LoginWindow\CrmLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,7 +140,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="bin\Debug\bin\Xrm.cs" />
+    <Compile Include="bin\Debug\Xrm.cs" />
     <Compile Include="LoginWindow\CrmLogin.xaml.cs">
       <DependentUpon>CrmLogin.xaml</DependentUpon>
     </Compile>
@@ -177,7 +178,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Xrm.ts">
       <DependentUpon>Template1.tst</DependentUpon>
-      <CustomToolNamespace>bin\Debug\bin\Xrm.cs</CustomToolNamespace>
+      <CustomToolNamespace>bin\Debug\Xrm.cs</CustomToolNamespace>
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,9 +226,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

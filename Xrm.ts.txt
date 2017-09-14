@@ -1,48 +1,4 @@
-﻿${
-    // Enable extension methods by adding using Typewriter.Extensions.*
-    using Typewriter.Extensions.Types;
-
-    // Uncomment the constructor to change template settings.
-    //Template(Settings settings)
-    //{
-    //    settings.IncludeProject("Project.Name");
-    //    settings.OutputExtension = ".tsx";
-    //}
-
-    // First upper conversion
-    string FirstUpper(Constant c)
-    {
-        return char.ToUpper(c.Value[0]) + c.Value.Substring(1);
-    }
-    // appends form on the name of a class name
-    string FormName(Class c)
-    {
-        return c.Name + "Form";
-    }
-    string AttribsName(Class c)
-    {
-        return c.Name + "Attributes";
-    }
-    // appends form on the name of a class name
-    string WebApiName(Class c)
-    {
-        return c.Name + "WebAPI";
-    }
-    // returns the name of the primary key for the entity
-    string idname(Class c)
-    {
-        if (c.Fields.Any(x => x.Name == "activityid"))
-            return "activityid";
-        else
-            return c.Name.ToLower() + "id";
-    }
-    // returns the WebAPI naming convention for foreign key/lookups
-    string fkfixer(Field f){
-        if (f.name.EndsWith("id") && (!f.name.Contains(((Class)f.Parent).Name.ToLower()) && !f.name.Contains("activity")))
-            return "_"+f.name+"_value";
-        else return f.name;
-    }
-}/** @description A CRM Typescript Project 
+﻿/** @description A CRM Typescript Project 
  */  
 module YOUR_PROJECTNAME_HERE {
     /** @description Specifies that Entities always have a url route and optionally have an id
@@ -197,8 +153,8 @@ module YOUR_PROJECTNAME_HERE {
                 return this.$http.get<T>(url, this.getConfig(formattedValues));
             }
             else {
-			return this.$http.get<T>(url);
-		}
+			    return this.$http.get<T>(url);
+		    }
 		}
 
         /** @description Performs a CRM WebAPI Retrieve for a nextLink URL on expanded attributes or collections
@@ -244,8 +200,8 @@ module YOUR_PROJECTNAME_HERE {
                 return this.$http.get<T>(url, this.getConfig(formattedValues));
             }
             else {
-			return this.$http.get<T>(url);
-		}
+			    return this.$http.get<T>(url);
+		    }
         }
 
         /** @description Performs a CRM WebAPI Update
@@ -337,50 +293,6 @@ module YOUR_PROJECTNAME_HERE {
             return config;
         } 
 	}
-    $Classes(c => c.Namespace == "Xrm")[
-    /** @description Collection interface for $Name
-     */  
-	export interface I$Constants[$FirstUpper] extends IRetrieveMultipleData<I$Name> { }
-    /** @description WebAPI interface for $Name
-     */  
-    export interface I$Name {
-        [key: string]: string | number
-        $Fields[$fkfixer?: $Type
-		]
-    }
-    /** @description Form Helper Class for $Name
-     */ 
-	export class $FormName {
-		$Fields[public $name: string = "$name";
-		]
-	}
-    /** @description Web API attribute string helper class for $Name
-     */ 
-    export class $WebApiName {
-        $Fields[public $fkfixer: string = "$fkfixer";
-		]	
-    }
-    /** @description Attributes Helper Class for $Name */ 
-	export class $AttribsName {
-		$Fields[public $name: IAttribName = { name:"$name", api_name:"$fkfixer" }
-		]	
-    }
-    /** @description Instantiates a $Name Entity to be used for CRUD based operations
-     * @param {object} initData An optional parameter for a create and update entities
-     */ 
-	export class $Name extends Entity {
-		[key: string]: string | number
-        $Constants[public $name: $Type = "$Value";]
-		$Fields[public $fkfixer: $Type;
-		]	
-        
-        constructor(initData?: I$Name) {
-			super($Constants["$Value"]);        
-            if (initData == undefined) return;
-			$Fields[this.$fkfixer = initData.$fkfixer;
-			]
-            this.id = initData.$idname;
-        }
-    }
-	]	
+
+	{#rendered_content#}
 }

@@ -10,7 +10,8 @@ using Microsoft.Xrm.Sdk.Metadata;
 using System.CodeDom.Compiler;
 using System.IO;
 using Fonlow.TypeScriptCodeDom;
-
+using Xrm2Ts;
+using System.Collections.Generic;
 
 namespace crmsvcutil_ts
 {
@@ -112,6 +113,9 @@ namespace crmsvcutil_ts
         /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            // collect all of the entity metadata items with the attribubte metadata
+            var selectedEntityMetadata= new List<EntityMetadata>();
+
             // CodeDOM starter objects
             var targetUnit = new CodeCompileUnit();
             CodeNamespace Xrm = new CodeNamespace("Xrm");
@@ -120,13 +124,15 @@ namespace crmsvcutil_ts
             foreach (EntityMetadata i in listBox.SelectedItems)
             {
                 // Retrieve the attribute metadata
-                var req = new RetrieveEntityRequest()
-                {
+                var req = new RetrieveEntityRequest() {
                     LogicalName = i.LogicalName,
                     EntityFilters = EntityFilters.Attributes,
                     RetrieveAsIfPublished = false
                 };
                 var resp = (RetrieveEntityResponse)_service.Execute(req);
+
+                // add to the list!
+                selectedEntityMetadata.Add(resp.EntityMetadata);
 
                 // create a class that represents the entity
                 var targetClass = new CodeTypeDeclaration(i.SchemaName);
@@ -166,6 +172,10 @@ namespace crmsvcutil_ts
                 
             }
 
+            // TODO jim testing
+            var xrm2tsAll = new XrmToTypeScriptTemplate(selectedEntityMetadata);
+            textResults.Text = xrm2tsAll.RenderAllClassTemplates();
+
             // once all the classes and properties have been added we add the namespace to the codecompileunit
             targetUnit.Namespaces.Add(Xrm);
 
@@ -192,8 +202,6 @@ namespace crmsvcutil_ts
             //GetActiveObject("VisualStudio.DTE.14.0");
             //var proj = dte2.Solution.Projects.Item(1);
             //var item = proj.ProjectItems.AddFromFile(Environment.CurrentDirectory + @"\Xrm.cs");
-
-            
 
             // show the "Generated" label in the app
             label.Visibility = Visibility.Visible;
