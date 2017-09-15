@@ -61,15 +61,6 @@ namespace crmsvcutil_ts.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to string.
-        /// </summary>
-        internal static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to /** @description A CRM Typescript Project 
         /// */  
         ///module YOUR_PROJECTNAME_HERE {

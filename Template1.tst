@@ -88,6 +88,7 @@ module YOUR_PROJECTNAME_HERE {
     
     export interface IUtils {
         formatDate(dateVal: string): string;
+        getFormattedValue(entity:any, attribute:string): string;
         isNullUndefinedEmpty(value: any): boolean;
         padLeadingZeros(num: number, precision: number): string;
         cleanGuid(guid: string, removeDashes?: boolean): string;
@@ -112,6 +113,25 @@ module YOUR_PROJECTNAME_HERE {
                 d.getFullYear() + " " +
                 pad(d.getHours(), 2) + ":" +
                 pad(d.getMinutes(), 2));
+        }
+
+        /**
+         * @description Retrieves the formatted value for an attribute
+         * @param {Entity} entity the entity containing the attribute
+         * @param {string} attribute name of the attribute being retrieved
+         */
+        getFormattedValue(entity:any, attribute:string): string {
+            var displayVal: string = null;
+
+            if (entity[attribute] !== null) {
+                displayVal = entity[attribute];
+
+                var extendedField = attribute + "@OData.Community.Display.V1.FormattedValue";
+                if (entity[extendedField] !== null) {
+                    displayVal = entity[extendedField];
+                }
+            }
+            return displayVal;
         }
 
         /**
