@@ -1,3 +1,4 @@
+[![Board Status](https://dev.azure.com/brecol/1aaefd8f-f9f4-40c6-9c35-20ca5118c0d6/b16f7879-de7a-4e83-a4b2-325cf442241a/_apis/work/boardbadge/f5dd8112-e53a-484c-a9b3-eb659d696f04)](https://dev.azure.com/brecol/1aaefd8f-f9f4-40c6-9c35-20ca5118c0d6/_boards/board/t/b16f7879-de7a-4e83-a4b2-325cf442241a/Microsoft.RequirementCategory)
 #Introduction
 Similar to how CrmSvcUtil helps make development better server-side the goal of CrmSvcUtilTypeScript is to make client-side development better for CRM.
 
